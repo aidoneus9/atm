@@ -12,20 +12,26 @@ while True:
 
     # 입금하기 💰
     if num == "1":
-        # deposit_amount = int(input("입금하실 금액을 숫자로 입력해 주세요. \n 입력: "))
-        deposit_amount = input("입금하실 금액💰을 숫자로 입력해 주세요. \n 입력: ")
+        deposit_amount = int(input("입금하실 금액을 숫자로 입력해 주세요. \n 입력: "))
 
-        #if isinstance(deposit_amount, int) and deposit_amount > 0: 
-        if deposit_amount.isdigit() and int(deposit_amount) > 0: 
+        if isinstance(deposit_amount, int) and deposit_amount > 0: 
             # 참고: isdigit()은 문자열 내 숫자를 판별하는 메서드이므로, 숫자가 정말 숫자인지를 알고 싶으면 isinstance()를 쓰는 게 맞음 
-            balance += int(deposit_amount)
+            balance += deposit_amount
             print(f"입금이 완료되었습니다. 입금한 금액: {deposit_amount}, 현재 잔액: {balance}")
 
         else:
             print("입금 금액💰은 숫자로만 입력하실 수 있습니다.")
 
     if num == "2":
-        pass
+        withdrawal_amount = int(input("출금하실 금액💵을 숫자로 입력해 주세요. \n 입력: "))
+
+        if isinstance(withdrawal_amount, int) and withdrawal_amount > 0: 
+            withdrawal_amount = min(withdrawal_amount, balance)
+            balance -= withdrawal_amount
+            print(f"출금이 완료되었습니다. 출금한 금액: {withdrawal_amount}, 현재 잔액: {balance}")
+
+        else:
+            print("출금 금액💵은 숫자로만 입력하실 수 있습니다.")
 
     if num == "3":
         pass
